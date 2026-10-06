@@ -1,0 +1,23 @@
+﻿@page "/conversor"
+@rendermode InteractiveServer
+
+<h1>Conversor de Temperatura</h1>
+
+<div class="mb-3">
+    <label>Temperatura em Celsius:</label>
+    <input type="number" class="form-control" @bind="celsius" style="max-width: 200px;" />
+</div>
+
+<button class="btn btn-primary mb-3" @onclick="Converter">Converter para Fahrenheit</button>
+
+<p><strong>Temperatura em Fahrenheit:</strong> @fahrenheit °F</p>
+
+@code {
+    private double celsius;
+    private double fahrenheit;
+
+    private void Converter()
+    {
+        fahrenheit = (celsius * 9.0 / 5.0) + 32;
+    }
+}

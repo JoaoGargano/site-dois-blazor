@@ -1,0 +1,41 @@
+﻿@page "/media"
+@rendermode InteractiveServer
+
+<h1>Calculadora de Média do Aluno</h1>
+
+<div class="mb-3">
+    <label>Nota 1:</label>
+    <input type="number" class="form-control" @bind="nota1" style="max-width: 200px;" />
+</div>
+
+<div class="mb-3">
+    <label>Nota 2:</label>
+    <input type="number" class="form-control" @bind="nota2" style="max-width: 200px;" />
+</div>
+
+<button class="btn btn-primary mb-3" @onclick="CalcularMedia">Calcular Média</button>
+
+@if (media != null)
+{
+    <p><strong>Média:</strong> @media</p>
+    
+    @if (media >= 7.0)
+    {
+        <h3 style="color: green;">Aprovado!</h3>
+    }
+    else
+    {
+        <h3 style="color: red;">Reprovado!</h3>
+    }
+}
+
+@code {
+    private double nota1;
+    private double nota2;
+    private double? media; // A interrogação permite que seja nulo no início
+
+    private void CalcularMedia()
+    {
+        media = (nota1 + nota2) / 2.0;
+    }
+}

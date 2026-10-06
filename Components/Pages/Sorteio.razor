@@ -1,0 +1,22 @@
+﻿@page "/sorteio"
+@rendermode InteractiveServer
+
+<h1>Sorteador de Números</h1>
+
+<button class="btn btn-primary mb-3" @onclick="SorteiaNumero">Gerar Número Aleatório</button>
+
+@if (numeroSorteado != null)
+{
+    <h2>O número sorteado foi: @numeroSorteado</h2>
+}
+
+@code {
+    private int? numeroSorteado;
+
+    private void SorteiaNumero()
+    {
+        // System.Random é a biblioteca do C# para sortear coisas
+        Random random = new Random();
+        numeroSorteado = random.Next(1, 101); // Sorteia entre 1 e 100
+    }
+}
